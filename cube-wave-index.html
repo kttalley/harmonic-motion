@@ -7,27 +7,27 @@
         let angRt = 0.05;
 
         //set xAmt = to 10 for a continuous stream effect.
-        let xAmt = 24;
+        let xAmt = 10;
         let xAmtTimer = 0;
 
         function setup () {
-            createCanvas(400,400);
+            createCanvas(800,400, WEBGL);
         }
 
         function draw () {
             xAmtTimer += 1;
-            if(xAmtTimer > 300){
-                xAmt = 10;
-                angRt = 0.05
-            }
-            if(xAmtTimer > 600){
-                xAmt  = 24;
-                xAmtTimer = 0;
-                angRt = 0.1;
-            }
+            // if(xAmtTimer > 300){
+            //     xAmt = 10;
+            //     angRt = 0.05
+            // }
+            // if(xAmtTimer > 600){
+            //     xAmt  = 24;
+            //     xAmtTimer = 0;
+            //     angRt = 0.1;
+            // }
 
             background(100);
-            translate(width/2, height/2);
+            // translate(width/2, height/2);
             rectMode(CENTER);
             
 
@@ -35,12 +35,18 @@
             for (let x = 0; x < width; x+= xAmt) {
                 let a = angle + offset;
                 let h = map(sin(a), -1, 1, 0, 100);
-                fill(255);
-                rect(x-width/2, 0, 10, h);
-                offset += 0.01;
+                
+
+                translate(x - width/h, 0, -100);
+                // camera(mouseX-width/h,mouseY-height/width);
+                box(xAmt, h, xAmt);
+                // fill(255);
+                // rect(x-width/2, 0, 10, h);
+                resetMatrix();
+                offset += 111;
             }
 
-            angle += angRt;
+            angle += angRt/2;
         }
     
     </script>
