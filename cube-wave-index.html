@@ -2,27 +2,45 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>
     <script>
         new p5();
+        
         let angle = 0;
+        let angRt = 0.05;
+
+        //set xAmt = to 10 for a continuous stream effect.
+        let xAmt = 24;
+        let xAmtTimer = 0;
+
         function setup () {
             createCanvas(400,400);
         }
 
         function draw () {
+            xAmtTimer += 1;
+            if(xAmtTimer > 300){
+                xAmt = 10;
+                angRt = 0.05
+            }
+            if(xAmtTimer > 600){
+                xAmt  = 24;
+                xAmtTimer = 0;
+                angRt = 0.1;
+            }
+
             background(100);
             translate(width/2, height/2);
             rectMode(CENTER);
             
 
             let offset = 0;
-            for (let x = 0; x < width; x+= 10) {
+            for (let x = 0; x < width; x+= xAmt) {
                 let a = angle + offset;
                 let h = map(sin(a), -1, 1, 0, 100);
                 fill(255);
                 rect(x-width/2, 0, 10, h);
-                offset += 0.1
+                offset += 0.01;
             }
 
-            angle += 0.05;
+            angle += angRt;
         }
     
     </script>
