@@ -20,13 +20,13 @@
             //     xAmt = 10;
             //     angRt = 0.05
             // }
-            // if(xAmtTimer > 600){
-            //     xAmt  = 24;
-            //     xAmtTimer = 0;
-            //     angRt = 0.1;
-            // }
+             if(xAmtTimer > 600){
+                 xAmt  = 24;
+                 xAmtTimer = 0;
+            //       angRt = 0.1;
+             }
 
-            background(100);
+            background(0, xAmt*xAmtTimer/20,xAmt); 
             // translate(width/2, height/2);
             rectMode(CENTER);
             
@@ -36,14 +36,20 @@
                 let a = angle + offset;
                 let h = map(sin(a), -1, 1, 0, 100);
                 
-
+                
                 translate(x - width/h, 0, -100);
                 // camera(mouseX-width/h,mouseY-height/width);
+                stroke(h*0.80,h,x);
+                specularMaterial(x*0.80,0, h);
                 box(xAmt, h, xAmt);
+
                 // fill(255);
                 // rect(x-width/2, 0, 10, h);
                 resetMatrix();
-                offset += 111;
+                
+               // translate(0-height/h, 0, -100);
+                 //   box(xAmt, h, xAmt);
+               offset += 111;
             }
 
             angle += angRt/2;
