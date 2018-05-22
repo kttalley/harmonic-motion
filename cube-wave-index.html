@@ -11,7 +11,7 @@
         let xAmtTimer = 0;
 
         function setup () {
-            createCanvas(800,400, WEBGL);
+            createCanvas(700,550, WEBGL);
         }
 
         function draw () {
@@ -28,7 +28,7 @@
 
             background(100);
             // translate(width/2, height/2);
-            rectMode(CENTER);
+           
             
 
             let offset = 0;
@@ -39,7 +39,8 @@
 
                 translate(x - width/h, 0, -100);
                 // camera(mouseX-width/h,mouseY-height/width);
-                box(xAmt, h, xAmt);
+                 
+                 box(xAmt, h, xAmt);
                 // fill(255);
                 // rect(x-width/2, 0, 10, h);
                 resetMatrix();
