@@ -26,11 +26,14 @@
             //     angRt = 0.1;
             // }
 
-            background(100);
+            background(100,mouseX,mouseY,100);
             // translate(width/2, height/2);
             rectMode(CENTER);
-            
-
+            // noStroke();
+            stroke(20,200);
+            specularMaterial(255,230);
+            directionalLight(220, mouseX,mouseY,100);
+        
             let offset = 0;
             for (let x = 0; x < width; x+= xAmt) {
                 let a = angle + offset;
@@ -38,6 +41,7 @@
                 
 
                 translate(x - width/h, 0, -100);
+                // camera(mouseX,mouseY,-2000);
                 // camera(mouseX-width/h,mouseY-height/width);
                 box(xAmt, h, xAmt);
                 // fill(255);
